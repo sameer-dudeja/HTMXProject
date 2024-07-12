@@ -16,32 +16,44 @@
     <link rel="stylesheet" href="">
 </head>
 
-<body class="bg-gray-100">
-    <div class="container mx-auto mt-8 text-center">
-        <div class="bg-white p4 border rounded-lg m-auto max-auto">
-            <h1 class="text-2xl font-bold mb-4">
-                Temperature Converter
-            </h1>
-            <form 
-            hx-trigger="submit"
-            hx-post="/convert"
-            hx-target="#result"
-            hx-indicator="#loader"
-            >
-                <label for="fahrenheit">
-                    Fahrenheit:
-                </label>
-                <input type="number" name="fahrenheit" id="fahrenheit" class="border p-2 rounded" value="32" required>
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
-                    Convert
-                </button>
-            </form>
-
-            <div id="result" class="mt-6 text-xl">
-
-            </div>
-
-            <div id="loader" class="text-center"></div>
+<body class="bg-blue-100">
+    <div class="container mx-auto py-8 max-w-lg">
+        
+        <div class="bg-gray-900 text-white p-4 border border-gray-600 rounded-lg max-w-lg m-auto">
+            <h3 class="text-2xl  mb-3 text-center">
+                Search Contacts
+            </h3>
+            <input
+                class="border border-gray-600 bg-gray-800 p-2 rounded-lg w-full mb-5"
+                type="search"
+                name="search"
+                placeholder="Begin Typing To Search Users..."
+                hx-post="/search"
+                hx-trigger="input changed delay:500ms, search"
+                hx-target="#search-results"
+                hx-indicator="#loading"
+        />
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-600 text-white">
+                    <tr>
+                        <th 
+                        scope="col"
+                        class="px-6 py-3 text-center font-medium uppercase tracking-wider">
+                        Name
+                        </th>
+                        <th 
+                        scope="col"
+                        class="px-6 py-3 text-center font-medium uppercase tracking-wider">
+                        Email
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="search-results" class="divide-gray-600">
+                </tbody>
+            </table>
+            <span class="htmx-indicator" id="loading">
+                <img src="img/loader.gif" alt="Loading..." class="m-auto h-10">
+            </span>
         </div>
     </div>
 </body>

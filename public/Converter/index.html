@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTMX Build App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/htmx.org@2.0.0"
+        integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="htmx-config" content='{"selfRequestsOnly":"true"}'>
+    <link rel="stylesheet" href="">
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-8 text-center">
+        <div class="bg-white p4 border rounded-lg m-auto max-auto">
+            <h1 class="text-2xl font-bold mb-4">
+                Temperature Converter
+            </h1>
+            <form 
+            hx-trigger="submit"
+            hx-post="/convert"
+            hx-target="#result"
+            hx-indicator="#loader"
+            >
+                <label for="fahrenheit">
+                    Fahrenheit:
+                </label>
+                <input type="number" name="fahrenheit" id="fahrenheit" class="border p-2 rounded" value="32" required>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
+                    Convert
+                </button>
+            </form>
+
+            <div id="result" class="mt-6 text-xl">
+
+            </div>
+
+            <div id="loader" class="text-center"></div>
+        </div>
+    </div>
+</body>
+
+</html>
